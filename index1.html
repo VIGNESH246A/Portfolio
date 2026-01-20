@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vignesh A | AI/ML Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0a0e27;
+            --bg-card: #151b3d;
+            --accent-cyan: #00d4ff;
+            --accent-blue: #0066ff;
+            --text-primary: #e8eaed;
+            --text-secondary: #b0b8c8;
+            --gradient: linear-gradient(135deg, #0066ff 0%, #00d4ff 100%);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: var(--accent-cyan);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 6rem 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Section */
+        #hero {
+            padding-top: 8rem;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-text .title {
+            font-size: 1.5rem;
+            color: var(--accent-cyan);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text .tagline {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-cyan);
+            border: 2px solid var(--accent-cyan);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.2);
+            border: 3px solid rgba(0, 212, 255, 0.3);
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* What I Build */
+        .capabilities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .capability-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.3s;
+        }
+
+        .capability-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .capability-card h3 {
+            color: var(--accent-cyan);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Tools Section */
+        .tools-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .tool-icon {
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .tool-icon:hover {
+            transform: translateY(-5px);
+        }
+
+        .tool-icon img {
+            width: 60px;
+            height: 60px;
+            filter: grayscale(20%);
+            transition: all 0.3s;
+        }
+
+        .tool-icon:hover img {
+            filter: grayscale(0%) drop-shadow(0 0 10px var(--accent-cyan));
+        }
+
+        .tool-icon::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-card);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            border: 1px solid var(--accent-cyan);
+        }
+
+        .tool-icon:hover::after {
+            opacity: 1;
+        }
+
+        /* Projects Section */
+        .project-category {
+            margin-bottom: 4rem;
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            color: var(--accent-cyan);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.3);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #1a2456 0%, #0a0e27 100%);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .project-content .subtitle {
+            color: var(--accent-cyan);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-content p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--accent-cyan);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            flex: 1;
+            text-align: center;
+            padding: 0.7rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .link-github {
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--accent-cyan);
+            border: 1px solid var(--accent-cyan);
+        }
+
+        .link-github:hover {
+            background: var(--accent-cyan);
+            color: var(--bg-dark);
+        }
+
+        .link-demo {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .link-demo:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* How I Think Section */
+        .thinking-quote {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 3rem;
+            background: var(--bg-card);
+            border-radius: 16px;
+            border-left: 4px solid var(--accent-cyan);
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: var(--text-primary);
+            font-style: italic;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-item a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: var(--text-primary);
+        }
+
+        .contact-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--bg-card);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--accent-cyan);
+            transition: all 0.3s;
+            text-decoration: none;
+            color: var(--accent-cyan);
+            font-size: 1.5rem;
+        }
+
+        .contact-icon:hover {
+            background: var(--accent-cyan);
+            color: var(--bg-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: rgba(10, 14, 39, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                transition: left 0.3s;
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+                flex-direction: column;
+            }
+
+            .hero-image img {
+                max-width: 350px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                min-height: auto;
+                padding: 4rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">VIGNESH A</div>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <ul id="navMenu">
+                <li><a href="#hero" onclick="closeMenu()">Home</a></li>
+                <li><a href="#about" onclick="closeMenu()">About</a></li>
+                <li><a href="#build" onclick="closeMenu()">What I Build</a></li>
+                <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
+                <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Vignesh A</h1>
+                    <div class="title">AI/ML Developer | Data Science | Generative AI</div>
+                    <p class="tagline">"I build production-ready AI systems — Generative AI, RAG, and ML — not just demos."</p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">View Projects</a>
+                        <a href="VIGNESH_AI_ML_Resume.pdf" class="btn btn-secondary" target="_blank">Download Resume</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=500&fit=crop" alt="Vignesh A">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Me</h2>
+            </div>
+            <div class="about-content">
+                <p>I'm Vignesh A, an AI/ML Engineer and Generative AI Developer specializing in building production-ready AI systems that solve real-world problems.</p>
+                <p>I work across the full AI lifecycle — from data analysis and machine learning to Generative AI solutions such as RAG pipelines and agentic AI workflows. My focus is on creating scalable, reliable, and deployable AI applications, not just experiments.</p>
+                <p>I've built enterprise-grade RAG systems, autonomous multi-agent platforms, computer vision solutions, and ML analytics applications using Python, LangChain, FAISS, FastAPI, MLflow, Docker, and AWS.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- What I Build Section -->
+    <section id="build">
+        <div class="container">
+            <div class="section-header">
+                <h2>What I Build</h2>
+            </div>
+            <div class="capabilities">
+                <div class="capability-card">
+                    <h3>Enterprise RAG & Document AI systems</h3>
+                    <p>Production-grade retrieval systems with semantic search and context-aware responses</p>
+                </div>
+                <div class="capability-card">
+                    <h3>Agentic AI & multi-agent workflows</h3>
+                    <p>Autonomous systems with intelligent task orchestration and self-correction</p>
+                </div>
+                <div class="capability-card">
+                    <h3>ML & Deep Learning models</h3>
+                    <p>Predictive analytics, computer vision, and NLP solutions at scale</p>
+                </div>
+                <div class="capability-card">
+                    <h3>Scalable AI APIs & dashboards</h3>
+                    <p>FastAPI backends with interactive Streamlit interfaces for real-time insights</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section id="tools">
+        <div class="container">
+            <div class="section-header">
+                <h2>Tools & Technologies</h2>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-icon" data-tooltip="Python"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"></div>
+                <div class="tool-icon" data-tooltip="SQL"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL"></div>
+                <div class="tool-icon" data-tooltip="Pandas"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas"></div>
+                <div class="tool-icon" data-tooltip="NumPy"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy"></div>
+                <div class="tool-icon" data-tooltip="Scikit-learn"><img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="Scikit-learn"></div>
+                <div class="tool-icon" data-tooltip="TensorFlow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow"></div>
+                <div class="tool-icon" data-tooltip="PyTorch"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch"></div>
+                <div class="tool-icon" data-tooltip="FastAPI"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" alt="FastAPI"></div>
+                <div class="tool-icon" data-tooltip="Docker"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"></div>
+                <div class="tool-icon" data-tooltip="AWS"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS"></div>
+                <div class="tool-icon" data-tooltip="PostgreSQL"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL"></div>
+                <div class="tool-icon" data-tooltip="Git"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"></div>
+                <div class="tool-icon" data-tooltip="GitHub"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Projects</h2>
+                <p>Production-ready AI systems solving real-world problems</p>
+            </div>
+
+            <!-- Generative AI Category -->
+            <div class="project-category">
+                <h3 class="category-title">🤖 Generative AI & Agentic Systems</h3>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=500&h=300&fit=crop" alt="GenAgent Pro" class="project-image">
+                        <div class="project-content">
+                            <h3>GenAgent Pro</h3>
+                            <p class="subtitle">Agentic AI Workflow Engine</p>
+                            <p>Autonomous multi-agent system with Planner, Executor, and Validator agents. State-machine orchestration with FAISS vector memory for long-term context.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">LangGraph</span>
+                                <span class="tech-tag">Google Gemini</span>
+                                <span class="tech-tag">FAISS</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/VIGNESH246A/GenAgent-Pro-Agentic-AI-Workflow" class="project-link link-github" target="_blank">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=500&h=300&fit=crop" alt="HR Copilot" class="project-image">
+                        <div class="project-content">
+                            <h3>HR Copilot</h3>
+                            <p class="subtitle">AI-Powered Hiring Assistant</p>
+                            <p>End-to-end autonomous recruitment workflow with multi-agent architecture, intent-based routing, and analytics dashboard.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Google Gemini</span>
+                                <span class="tech-tag">NLP</span>
+                                <span class="tech-tag">Streamlit</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/VIGNESH246A/HR-Copilot" class="project-link link-github" target="_blank">GitHub</a>
+                                <a href="https://hr-copilot-2egdggstbugtejcanhzcnu.streamlit.app/" class="project-link link-demo" target="_blank">Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RAG Category -->
+            <div class="project-category">
+                <h3 class="category-title">🔍 RAG & Document AI</h3>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <img src="https://images.unsplash.com/photo-1618044733300-9472054094ee?w=500&h=300&fit=crop" alt="Enterprise Document AI" class="project-image">
+                        <div class="project-content">
+                            <h3>Enterprise Document AI Assistant</h3>
+                            <p class="subtitle">Production-grade RAG System</p>
+                            <p>Multi-format document ingestion with semantic search, citation-grounded responses, and confidence scoring. Dockerized FastAPI backend.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">RAG</span>
+                                <span class="tech-tag">FAISS</span>
+                                <span class="tech-tag">FastAPI</span>
+                                <span class="tech-tag">Docker</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/VIGNESH246A/Enterprise-Document-AI-Assistant" class="project-link link-github" target="_blank">GitHub</a>
+                                <a href="https://enterprise-document-ai-assistant-rpegwwkqedqzufzfmsa9u7.streamlit.app/" class="project-link link-demo" target="_blank">Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="https://images.unsplash.com/photo-1554224311-beee460ae6fb?w=500&h=300&fit=crop" alt="Policy RAG" class="project-image">
+                        <div class="project-content">
+                            <h3>Policy & Invoice RAG System</h3>
+                            <p class="subtitle">Enterprise RAG with OCR</p>
+                            <p>OCR-based ingestion with multi-layer hallucination detection using TF-IDF, entity validation, and domain restrictions.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">RAG</span>
+                                <span class="tech-tag">ChromaDB</span>
+                                <span class="tech-tag">OCR</span>
+                                <span class="tech-tag">LangChain</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/VIGNESH246A/Policy---Invoice-RAG-System" class="project-link link-github" target="_blank">GitHub</a>
+                                <a href="https://policy---invoice-rag-system-yuf5dwgqvw4d3remzazkem.streamlit.app/" class="project-link link-demo" target="_blank">Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="https://images.unsplash.com/photo-1556740758-90de374c12ad?w=500&h=300&fit=crop" alt="Customer Intelligence" class="project-image">
+                        <div class="project-content">
+                            <h3>AI Customer Intelligence System</h3>
+                            <p class="subtitle">NLP Classification + RAG</p>
+                            <p>Dual-model pipeline with Random Forest and LSTM for actionable message routing and RAG-powered response generation.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">NLP</span>
+                                <span class="tech-tag">LSTM</span>
+                                <span class="tech-tag">FAISS</span>
+                                <span class="tech-tag">RAG</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/VIGNESH246A/AI-Powered-Customer-Intelligence-System-Actionable-Message-NLP-Classification-RAG-Chatbot" class="project-link link-github" target="_blank">GitHub</a>
+                                <a href="https://ntptwygoz34ofkupgb5wxi.streamlit.app/" class="project-link link-demo" target="_blank">Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Computer Vision Category -->
+            <div class="project-category">
+                <h3 class="category-title">👁️ Computer Vision</h3>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <img src="https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=500&h=300&fit=crop" alt="SmartVision AI" class="project-image">
+                        <div class="project-content">
+                            <h3>SmartVision AI</h3>
+                            <p class="subtitle">Computer Vision Platform</p>
+                            <p>Real-time object detection with YOLOv8 and CNN classification using VGG16, ResNet50, MobileNet, and EfficientNet with performance benchmarking.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">YOLOv8</span>
+                                <span class="tech-tag">CNN</span>
+                                <span class="tech-tag">TensorFlow</span>
+                                <span class="tech-tag">OpenCV</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/VIGNESH246A/SmartVision_AI" class="project-link link-github" target="_blank">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=500&h=300&fit=crop" alt="Helmet Detection" class="project-image">
+                        <div class="project-content">
+                            <h3>Real-Time Helmet Detection</h3>
+                            <p class="subtitle">Construction Safety Monitoring</p>
+                            <p>AI-based PPE compliance system with 25-30 FPS performance, multi-source video support, and automated alert dashboard.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">YOLOv8</span>
+                                <span class="tech-tag">PyTorch</span>
+                                <span class="tech-tag">OpenCV</span>
+                                <span class="tech-tag">SQLite</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/VIGNESH246A/Real-Time-Helmet-Detection-Construction-Site-Safety-Monitoring-System" class="project-link link-github" target="_blank">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Science Category -->
+            <div class="project-category">
+                <h3 class="category-title">📊 Data Science & Machine Learning</h3>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <img src="https://images.unsplash.com/photo-1554224311-beee460ae6fb?w=500&h=300&fit=crop" alt="EMIPredict AI" class="project-image">
+                        <div class="project-content">
+                            <h3>EMIPredict AI</h3>
+                            <p class="subtitle">Financial Risk Assessment</p>
+                            <p>ML-powered EMI eligibility platform processing 400K records with XGBoost, achieving 94.82% accuracy. MLflow-integrated deployment.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">XGBoost</span>
+                                <span class="tech-tag">MLflow</span>
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Streamlit</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/VIGNESH246A/EMI_Predict_AI" class="project-link link-github" target="_blank">GitHub</a>
+                                <a href="https://emipredictai-4l99bbuzz5jyinjtpxv4bf.streamlit.app/" class="project-link link-demo" target="_blank">Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=500&h=300&fit=crop" alt="PatrolIQ" class="project-image">
+                        <div class="project-content">
+                            <h3>PatrolIQ</h3>
+                            <p class="subtitle">Chicago Crime Analytics</p>
+                            <p>Unsupervised ML for crime hotspot detection with K-Means clustering, PCA, and t-SNE. Interactive heatmaps and temporal analysis.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">K-Means</span>
+                                <span class="tech-tag">PCA</span>
+                                <span class="tech-tag">MLflow</span>
+                                <span class="tech-tag">Streamlit</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/VIGNESH246A/Chicago-Crime-Analytics-PatrolIQ" class="project-link link-github" target="_blank">GitHub</a>
+                                <a href="https://chicago-crime-analytics-patroliq-bp57cn2n9t7eoyvcmvqmx6.streamlit.app/" class="project-link link-demo" target="_blank">Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop" alt="Amazon Analytics" class="project-image">
+                        <div class="project-content">
+                            <h3>Amazon India Sales Analytics</h3>
+                            <p class="subtitle">E-commerce BI Dashboard</p>
+                            <p>Large-scale analytics on 1M+ transactions with advanced EDA and Power BI dashboards featuring 25-30 interactive charts.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Pandas</span>
+                                <span class="tech-tag">SQL</span>
+                                <span class="tech-tag">Power BI</span>
+                                <span class="tech-tag">Statistics</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/VIGNESH246A/amazon-india-2015-to-2025-sales-analytics-dashboard" class="project-link link-github" target="_blank">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=500&h=300&fit=crop" alt="Cricbuzz" class="project-image">
+                        <div class="project-content">
+                            <h3>Cricbuzz LiveStats</h3>
+                            <p class="subtitle">Real-time Cricket Analytics</p>
+                            <p>Live API data platform with JSON processing, SQL analytics, and CRUD operations for real-time cricket statistics.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">SQL</span>
+                                <span class="tech-tag">REST API</span>
+                                <span class="tech-tag">Streamlit</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/VIGNESH246A/Cricbuzz_livestats" class="project-link link-github" target="_blank">GitHub</a>
+                                <a href="https://cricbuzzlivestats-app.streamlit.app/" class="project-link link-demo" target="_blank">Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How I Think Section -->
+    <section id="thinking">
+        <div class="container">
+            <div class="section-header">
+                <h2>How I Think</h2>
+            </div>
+            <div class="thinking-quote">
+                "I approach AI problems with a system-first mindset, focusing on data quality, architecture, scalability, and measurable outcomes rather than isolated models."
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="section-header">
+                    <h2>Let's Connect</h2>
+                    <p>Open to exciting AI/ML opportunities and collaborations</p>
+                </div>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <strong>Email</strong>
+                        <a href="mailto:vignesh246v@gmail.com">vignesh246v@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Phone</strong>
+                        <a href="tel:+918489246246">+91 84892 46246</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Location</strong>
+                        <span>Chennai, Tamil Nadu, India</span>
+                    </div>
+                </div>
+
+                <div class="contact-icons">
+                    <a href="mailto:vignesh246v@gmail.com" class="contact-icon" title="Email">✉</a>
+                    <a href="https://www.linkedin.com/in/vignesh246v-ai-engineer/" class="contact-icon" target="_blank" title="LinkedIn">in</a>
+                    <a href="https://github.com/VIGNESH246A" class="contact-icon" target="_blank" title="GitHub">⚡</a>
+                    <a href="VIGNESH_AI_ML_Resume.pdf" class="contact-icon" target="_blank" title="Resume">📄</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Vignesh A. Built with passion for AI/ML innovation.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll reveal animation
+        const sections = document.querySelectorAll('section');
+        
+        const revealSection = () => {
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (sectionTop < windowHeight * 0.75) {
+                    section.classList.add('visible');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealSection);
+        window.addEventListener('load', revealSection);
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.remove('active');
+        }
+
+        // Active nav link on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.style.color = 'var(--accent-cyan)';
+                } else {
+                    link.style.color = 'var(--text-secondary)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
